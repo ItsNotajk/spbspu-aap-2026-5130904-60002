@@ -5,71 +5,71 @@ const int CALCULATION_ERROR_CODE = 2;
 
 int main()
 {
-  int currElem = 0;
-  int prevElem = 0;
-  bool isFirstElem = true;
+  int curr_elem = 0;
+  int prev_elem = 0;
+  bool is_first_elem = true;
 
-  bool seqFeatError = false;
+  bool seq_feat_error = false;
 
-  int maxDescLen = 0;
-  int currDescLen = 0;
+  int max_desc_len = 0;
+  int curr_desc_len = 0;
 
-  int minCount = 0;
+  int min_count = 0;
 
   while (true)
   {
-    prevElem = currElem;
+    prev_elem = curr_elem;
 
-    std::cin >> currElem;
+    std::cin >> curr_elem;
     if (std::cin.fail())
     {
       std::cerr << "ERROR: The given symbols are not a sequence\n";
       return INPUT_ERROR_CODE;
     }
 
-    if (currElem == 0)
+    if (curr_elem == 0)
     {
-      if (isFirstElem)
+      if (is_first_elem)
       {
         std::cerr << "[LOC-MIN] ERROR: The given sequence is empty\n";
-        seqFeatError = true;
+        seq_feat_error = true;
       }
       break;
     }
 
-    if (isFirstElem)
+    if (is_first_elem)
     {
-      currDescLen = 1;
-      isFirstElem = false;
+      curr_desc_len = 1;
+      is_first_elem = false;
       continue;
     }
 
-    if (currElem <= prevElem)
+    if (curr_elem <= prev_elem)
     {
-      currDescLen++;
-      if (currDescLen > maxDescLen)
+      curr_desc_len++;
+      if (curr_desc_len > max_desc_len)
       {
-        maxDescLen = currDescLen;
+        max_desc_len = curr_desc_len;
       }
     }
     else
     {
-      if (currDescLen > 1)
+      if (curr_desc_len > 1)
       {
-        minCount++;
+        min_count++;
       }
-      currDescLen = 1;
+      curr_desc_len = 1;
     }
   }
 
-  std::cout << "[MON-DEC] Maximum descending order length: " << maxDescLen << "\n";
+  std::cout << "[MON-DEC] Maximum descending order length: " << max_desc_len << "\n";
 
-  if (seqFeatError)
+  if (seq_feat_error)
   {
     return 2;
   }
 
-  std::cout << "[LOC-MIN] Number of minimums: " << minCount << "\n";
+  std::cout << "[LOC-MIN] Number of minimums: " << min_count << "\n";
 
   return 0;
 }
