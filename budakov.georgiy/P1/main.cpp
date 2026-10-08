@@ -32,7 +32,7 @@ int main()
       if (isFirstElem)
       {
         std::cerr << "[LOC-MIN] ERROR: The given sequence is empty\n";
-	seqFeatError = true;
+        seqFeatError = true;
       }
       break;
     }
@@ -49,14 +49,14 @@ int main()
       currDescLen++;
       if (currDescLen > maxDescLen)
       {
-	maxDescLen = currDescLen;
+        maxDescLen = currDescLen;
       }
     }
     else
     {
       if (currDescLen > 1)
       {
-	minCount++;
+        minCount++;
       }
       currDescLen = 1;
     }
@@ -66,7 +66,7 @@ int main()
 
   if (seqFeatError)
   {
-	return 2;
+    return 2;
   }
 
   std::cout << "[LOC-MIN] Number of minimums: " << minCount << "\n";
