@@ -18,48 +18,48 @@ int main()
 
   while (true)
   {
-	prevElem = currElem;
+    prevElem = currElem;
 
-	std::cin >> currElem;
-	if (std::cin.fail())
-	{
-	  std::cerr << "ERROR: The given symbols are not a sequence\n";
-	  return INPUT_ERROR_CODE;
-	}
+    std::cin >> currElem;
+    if (std::cin.fail())
+    {
+    std::cerr << "ERROR: The given symbols are not a sequence\n";
+    return INPUT_ERROR_CODE;
+    }
 
-	if (currElem == 0)
-	{
-	  if (isFirstElem)
-	  {
-		std::cerr << "[LOC-MIN] ERROR: The given sequence is empty\n";
-		seqFeatError = true;
-	  }
-	  break;
-	}
+    if (currElem == 0)
+    {
+      if (isFirstElem)
+      {
+        std::cerr << "[LOC-MIN] ERROR: The given sequence is empty\n";
+	seqFeatError = true;
+      }
+      break;
+      }
 
-	if (isFirstElem)
-	{
-	  currDescLen = 1;
-	  isFirstElem = false;
-	  continue;
-	}
+    if (isFirstElem)
+    {
+      currDescLen = 1;
+      isFirstElem = false;
+      continue;
+    }
 
-	if (currElem <= prevElem)
-	{
-	  currDescLen++;
-	  if (currDescLen > maxDescLen)
-	  {
-		maxDescLen = currDescLen;
-	  }
-	}
-	else
-	{
-	  if (currDescLen > 1)
-	  {
-		minCount++;
-	  }
-	  currDescLen = 1;
-	}
+    if (currElem <= prevElem)
+    {
+      currDescLen++;
+      if (currDescLen > maxDescLen)
+      {
+	maxDescLen = currDescLen;
+        }
+    }
+    else
+    {
+      if (currDescLen > 1)
+      {
+	minCount++;
+      }
+      currDescLen = 1;
+    }
   }
 
   std::cout << "[MON-DEC] Maximum descending order length: " << maxDescLen << "\n";
