@@ -23,8 +23,8 @@ int main()
     std::cin >> currElem;
     if (std::cin.fail())
     {
-    std::cerr << "ERROR: The given symbols are not a sequence\n";
-    return INPUT_ERROR_CODE;
+      std::cerr << "ERROR: The given symbols are not a sequence\n";
+      return INPUT_ERROR_CODE;
     }
 
     if (currElem == 0)
@@ -50,7 +50,7 @@ int main()
       if (currDescLen > maxDescLen)
       {
 	maxDescLen = currDescLen;
-        }
+      }
     }
     else
     {
