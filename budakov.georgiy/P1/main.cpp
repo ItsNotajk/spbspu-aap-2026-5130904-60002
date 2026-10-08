@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 
 const int INPUT_ERROR_CODE = 1;
 const int CALCULATION_ERROR_CODE = 2;
@@ -35,7 +35,7 @@ int main()
 	seqFeatError = true;
       }
       break;
-      }
+    }
 
     if (isFirstElem)
     {
