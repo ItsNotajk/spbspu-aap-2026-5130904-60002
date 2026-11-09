@@ -1,14 +1,15 @@
-#include<iostream>
-#include<cstddef>
-#include<cctype>
-#include<cstring>
+#include <iostream>
+#include <cstddef>
+#include <cctype>
+#include <cstring>
 
 namespace budakov
 {
   const size_t START_SIZE = 10;
   const size_t INVALID_INPUT_CODE = 1;
+  const size_t LATIN_ALPHABET_SIZE = 26;
 
-  void convertToLower(char * const str) noexcept
+  void convertToLower(char* const str) noexcept
   {
     for (std::size_t i = 0; str[i] != '\0'; i++)
     {
@@ -20,9 +21,9 @@ namespace budakov
     }
   }
 
-  void missingLatinSequence(char * const src, char * dest) noexcept
+  void missingLatinSequence(const char* const src, char* dest) noexcept
   {
-    bool latin_symbols[26] { false };
+    bool latin_symbols[LATIN_ALPHABET_SIZE]{false};
     for (std::size_t i = 0; src[i] != '\0'; i++)
     {
       if ('a' <= src[i] && src[i] <= 'z')
@@ -33,7 +34,7 @@ namespace budakov
     std::size_t i = 0;
     for (char c = 'a'; c < 'z'; c++)
     {
-      if (latin_symbols[c-'a'] == 0)
+      if (latin_symbols[c - 'a'] == 0)
       {
         dest[i++] = c;
       }
@@ -41,9 +42,9 @@ namespace budakov
     dest[i] = '\0';
   }
 
-  char * readSequence()
+  char* readSequence()
   {
-    char * str = new char[START_SIZE];
+    char* str = new char[START_SIZE];
     std::size_t current_size = START_SIZE;
     std::size_t index = 0;
     char current_symbol = '\0';
@@ -59,7 +60,7 @@ namespace budakov
         else
         {
           current_size *= 2;
-          char * new_str = new char[current_size];
+          char* new_str = new char[current_size];
           for (std::size_t i = 0; i < index; i++)
           {
             new_str[i] = str[i];
@@ -68,10 +69,6 @@ namespace budakov
           str = new_str;
           new_str = nullptr;
           str[index] = current_symbol;
-        }
-        if (!(std::isalpha(str[index]) || str[index] == ' '))
-        {
-          throw std::invalid_argument("argument is not a number\n");
         }
         index++;
         str[index] = '\0';
@@ -94,16 +91,16 @@ namespace budakov
     return str;
   }
 
-  char * copySequence(char * str)
+  char* copySequence(char* str)
   {
-    char * res = nullptr;
+    char* res = nullptr;
     const size_t size = strlen(str) + 1;
     try
     {
       res = new char[size];
       strcpy(res, str);
     }
-    catch(...)
+    catch (...)
     {
       delete[] res;
       res = nullptr;
@@ -112,9 +109,9 @@ namespace budakov
     return res;
   }
 
-  void printSequence(const char * const str)
+  void printSequence(const char* const str)
   {
-    size_t size = strlen(str);
+    const size_t size = strlen(str);
     for (std::size_t i = 0; i < size; i++)
     {
       std::cout << str[i];
@@ -125,8 +122,8 @@ namespace budakov
 
 int main()
 {
-  char * str = nullptr;
-  char * lower_case = nullptr;
+  char* str = nullptr;
+  char* lower_case = nullptr;
 
   try
   {
@@ -135,7 +132,7 @@ int main()
     budakov::convertToLower(lower_case);
     budakov::printSequence(lower_case);
 
-    char result_buffer[27] { '\0' };
+    char result_buffer[budakov::LATIN_ALPHABET_SIZE + 1]{'\0'};
     budakov::missingLatinSequence(lower_case, result_buffer);
     budakov::printSequence(result_buffer);
   }
