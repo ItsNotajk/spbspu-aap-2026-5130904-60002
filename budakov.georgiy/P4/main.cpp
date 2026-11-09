@@ -3,16 +3,18 @@
 #include<cctype>
 #include<cstring>
 
-namespace budakov{
+namespace budakov
+{
   const int START_SIZE = 10;
   const int INVALID_INPUT_CODE = 1;
 
-  void convertToLower(char * const str) noexcept 
+  void convertToLower(char * const str) noexcept
   {
     for (std::size_t i = 0; str[i] != '\0'; i++)
     {
       const char symbol = str[i];
-      if (std::isupper(str[i])) {
+      if (std::isupper(str[i]))
+      {
         str[i] = std::tolower(symbol);
       }
     }
@@ -46,7 +48,7 @@ namespace budakov{
     int index = 0;
     char current_symbol = '\0';
 
-    try 
+    try
     {
       while (std::cin.get(current_symbol) && current_symbol != '\n')
       {
@@ -119,8 +121,6 @@ namespace budakov{
     }
     std::cout << "\n";
   }
-
-  
 }
 
 int main()
