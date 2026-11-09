@@ -5,8 +5,8 @@
 
 namespace budakov
 {
-  const int START_SIZE = 10;
-  const int INVALID_INPUT_CODE = 1;
+  const size_t START_SIZE = 10;
+  const size_t INVALID_INPUT_CODE = 1;
 
   void convertToLower(char * const str) noexcept
   {
@@ -44,8 +44,8 @@ namespace budakov
   char * readSequence()
   {
     char * str = new char[START_SIZE];
-    int current_size = START_SIZE;
-    int index = 0;
+    std::size_t current_size = START_SIZE;
+    std::size_t index = 0;
     char current_symbol = '\0';
 
     try
@@ -97,7 +97,7 @@ namespace budakov
   char * copySequence(char * str)
   {
     char * res = nullptr;
-    const int size = strlen(str) + 1;
+    const size_t size = strlen(str) + 1;
     try
     {
       res = new char[size];
