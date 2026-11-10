@@ -14,9 +14,9 @@ namespace budakov
     for (std::size_t i = 0; str[i] != '\0'; i++)
     {
       const char symbol = str[i];
-      if (std::isupper(str[i]))
+      if (std::isupper(static_cast<unsigned char>(str[i])))
       {
-        str[i] = std::tolower(symbol);
+        str[i] = std::tolower(static_cast<unsigned char>(symbol));
       }
     }
   }
@@ -32,7 +32,7 @@ namespace budakov
       }
     }
     std::size_t i = 0;
-    for (char c = 'a'; c < 'z'; c++)
+    for (char c = 'a'; c <= 'z'; c++)
     {
       if (latin_symbols[c - 'a'] == 0)
       {
